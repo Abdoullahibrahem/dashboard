@@ -90,6 +90,26 @@ class select
     }
 }
 
-class Course_category
+// [A] this class for select data for instructor page
+class selectDataForIns 
 {
+    private $sel_ins;
+    const TABLES = 'courses,teachers';
+    const COLMUNS ='teachers.NAME,teachers.EMAIL,teachers.PHONE,teachers.ABOUT,teachers.PHOTO,teachers.COUNTRY,
+                    COUNT(*) AS "ACTIVE_C_COUNT"';
+    const CONDITION =  "(teachers.ID = courses.TEACHER_ID) 
+                       AND courses.status = 'active' 
+                       AND teachers.PERSON_TYPE = 'instructor' ";  
+    const GROUP = 'teachers.NAME';                     
+                       
+    public function __construct()
+     {
+         $this->sel_ins = new queries();
+     }  
+     
+    public function Total_Instructor_Info()
+     {
+         $select = $this->sel_ins->SelectData(self::TABLES , self::COLMUNS , self::CONDITION , self::GROUP );
+         return $select;
+     }
 }
