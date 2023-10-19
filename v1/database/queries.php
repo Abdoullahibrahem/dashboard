@@ -88,21 +88,28 @@ class count extends conn
     }
 }
 
-class queries extends conn
+class queries extends Database
 {
-    public function SelectTopCoursesByCoursPop($limit = 5)
+    // (A) function SelectData  =>> The function selects the information you want to display
+    public function SelectData($table, $columns = "*", $where = "", $group = "") 
     {
-        $SL_Query = "SELECT course_name, COUNT(COURSE_POP) as course_count FROM courses GROUP BY course_name ORDER BY course_count DESC LIMIT :limit";
-        $stmt = $this->conn->prepare($SL_Query);
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $SL_Query = "SELECT $columns FROM $table";
 
-        $topCourses = [];
-        foreach ($results as $row) {
-            $topCourses[] = $row['course_name'] . " ({$row['course_count']})";
+        // (A) If you need to specify the information more accurately
+        if (!empty($where))
+        {
+            $SL_Query .= " WHERE $where"; 
         }
 
-        return $topCourses;
+        if (!empty($group))
+        {
+            $SL_Query .= "GROUP BY $group"; 
+        }
+
+        $stmt = $this->conn->prepare($SL_Query);
+        $stmt->execute();
+
+        $result =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

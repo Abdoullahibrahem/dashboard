@@ -47,7 +47,7 @@ echo '</script>';
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="instructor-list.php">
           <i class="bx fa-solid fa-user-secret"></i>
           <span class="text">Instructors</span>
         </a>

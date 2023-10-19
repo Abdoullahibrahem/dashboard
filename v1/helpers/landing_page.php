@@ -37,10 +37,10 @@ function Top_Categories()
 
 
 
-//[A] popularity select
-function getSelected()
-{
-    $select = new select();
-    $course_pop = $select->Total_Course_popularity();
-    return [$course_pop];
-}
+// //[A] popularity select
+// function getSelected()
+// {
+//     $select = new select();
+//     $course_pop = $select->Total_Course_popularity();
+//     return [$course_pop];
+// }
