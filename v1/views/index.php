@@ -53,7 +53,7 @@ echo '</script>';
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="course-category.php">
           <i class='bx fa-solid fa-chalkboard-user'></i>
           <span class="text">Courses</span>
         </a>

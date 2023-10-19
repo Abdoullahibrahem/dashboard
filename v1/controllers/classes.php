@@ -64,39 +64,14 @@ class Counter
         $count = $this->counter->getTopCategory();
         return $count;
     }
+    public function Course_Category()
+    {
+        $count = $this->counter->getcoursesCategory();
+        return $count;
+    }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// [A] this class for select data for (pie chart)
 class select
 {
     private $selected;
@@ -110,7 +85,11 @@ class select
 
     public function Total_Course_popularity()
     {
-        $select = $this->selected->SelectData(self::COURSES_TABLE, self::COURSES_POP);
+        $select = $this->selected->SelectTopCoursesByCoursPop(5);
         return $select;
     }
+}
+
+class Course_category
+{
 }

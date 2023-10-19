@@ -69,47 +69,40 @@ class count extends conn
             die("Failed to fetch count: " . $e->getMessage());
         }
     }
+    public function getCoursesCategory()
+    {
+        $query = "SELECT Course_Category, COUNT(*) as count FROM Courses GROUP BY Course_Category";
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+            $trackCounts = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $trackCounts[$row['Course_Category']] = $row['count'];
+            }
+
+            return $trackCounts;
+        } catch (PDOException $e) {
+            die("Failed to fetch count: " . $e->getMessage());
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class queries extends conn
 {
-    // (A) function SelectData  =>> The function selects the information you want to display
-    public function SelectData($table, $columns = "*", $where = "")
+    public function SelectTopCoursesByCoursPop($limit = 5)
     {
-        $SL_Query = "SELECT $columns FROM $table";
+        $SL_Query = "SELECT course_name, COUNT(COURSE_POP) as course_count FROM courses GROUP BY course_name ORDER BY course_count DESC LIMIT :limit";
+        $stmt = $this->conn->prepare($SL_Query);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // (A) If you need to specify the information more accurately
-        if (!empty($where)) {
-            $SL_Query .= " WHERE $where";
+        $topCourses = [];
+        foreach ($results as $row) {
+            $topCourses[] = $row['course_name'] . " ({$row['course_count']})";
         }
 
-        $stmt = $this->conn->prepare($SL_Query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $topCourses;
     }
 }
