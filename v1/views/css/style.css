@@ -449,6 +449,7 @@ body {
   font-weight: 600;
 }
 
+
 #content main .table-data .head .bx {
   cursor: pointer;
 }
@@ -623,10 +624,12 @@ body {
   }
 
   #content main .table-data .order table {
-    min-width: 420px;
+    min-width: 42px;
+    
   }
 
   #content main .table-data .todo .todo-list {
     min-width: 420px;
   }
+  
 }
