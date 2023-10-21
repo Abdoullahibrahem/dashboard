@@ -1,6 +1,9 @@
 <?php
-include 'C:\xampp\htdocs\dashboard\v1\helpers\instructor_page.php';
-$result_ins = getSelected_ins();
+include 'C:\xampp\htdocs\dashboard\v1\helpers\courses_list.php';
+$courses = getSelected_courses();
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,7 @@ $result_ins = getSelected_ins();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/lib/fontawesome-free-6.4.2-web/css/all.min.css" />
-  <link rel="stylesheet" href="css/instructor-list.css" />
+  <link rel="stylesheet" href="css/Courses.css" />
   <title>Dashboard</title>
 </head>
 
@@ -100,57 +103,50 @@ $result_ins = getSelected_ins();
         <table>
           <thead>
             <tr>
-              <th><input type="checkbox" name="checkbox" id="checkbox"> Instructor</th>
-              <th> Phone </th>
-              <th> Country </th>
-              <th> Active Courses</th>
-              <th> Description </th>
+              <th><input type="checkbox" name="checkbox" id="checkbox"> Courses</th>
+
+              <th> Category </th>
+              <th> Instructor</th>
+              <th> Lesson </th>
+              <th> Price </th>
+              <th> Staus </th>
+
+
             </tr>
+
+
           </thead>
 
 
           <tbody>
-            <?php foreach ($result_ins as  $ins) {
-
+            <?php foreach ($courses as $course) {
             ?>
               <tr>
 
                 <td class="td1">
                   <input type="checkbox" name="checkbox" id="checkbox">
-                  <img src="img/Frame 78.png" alt="">
-                  <div>
-                    <h1>
-                      <?= $ins['NAME'] ?>
-                    </h1>
-                    <p>
-                      <?= $ins['EMAIL'] ?>
-                    </p>
-                  </div>
+                  <img src="images/Screenshot (252).png" alt="">
+
+                  <h1><?= $course['Course_name']; ?></h1>
+
+
 
 
                 </td>
 
-                <td class="td2">
-                  <?= $ins['PHONE'] // MANGE DATA BASE
-                  ?>
-                </td>
-                <td class="td2">
-                  <?= $ins['COUNTRY'] ?>
-                </td>
+                <td class="td2"> <?= $course['Course_Category']; ?> </td>
+                <td class="td2"> <?= $course['NAME']; ?> </td>
                 <td>
-                  <p>
-                    <?= $ins['ACTIVE_C_COUNT'] ?> Active Course
-                  </p>
+                  <p>Total Lesson :<?= $course['Course_Duration']; ?> month </p>
                 </td>
-                <td class="td2">
-                  <?= substr($ins['ABOUT'], 0, 50) ?>
+                <td class="td2"> <?= $course['Course_Cost']; ?>
+
+                </td>
+                <td class="td3"> <?= $course['status']; ?>
 
                 </td>
               </tr>
             <?php } ?>
-
-
-
           </tbody>
         </table>
       </section>

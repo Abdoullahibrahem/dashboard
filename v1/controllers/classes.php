@@ -50,7 +50,7 @@ class Counter
 
     public function Total_Instructors()
     {
-        $count = $this->counter->getCount(self::INSTRUCTORS_TABLE, 'instractor');
+        $count = $this->counter->getCount(self::INSTRUCTORS_TABLE, 'instructor');
         return $count;
     }
 
@@ -91,25 +91,50 @@ class Counter
 // }
 
 // [A] this class for select data for instructor page
-class selectDataForIns 
+class selectDataForIns
 {
     private $sel_ins;
     const TABLES = 'courses,teachers';
-    const COLMUNS ='teachers.NAME,teachers.EMAIL,teachers.PHONE,teachers.ABOUT,teachers.PHOTO,teachers.COUNTRY,
+    const COLMUNS = 'teachers.NAME,teachers.EMAIL,teachers.PHONE,teachers.ABOUT,teachers.PHOTO,teachers.COUNTRY,
                     COUNT(*) AS "ACTIVE_C_COUNT"';
     const CONDITION =  "(teachers.ID = courses.TEACHER_ID) 
                        AND courses.status = 'active' 
-                       AND teachers.PERSON_TYPE = 'instructor' ";  
-    const GROUP = 'teachers.NAME';                     
+                       AND teachers.PERSON_TYPE = 'instructor' ";
+    const GROUP = 'teachers.NAME';
+
+    public function __construct()
+    {
+        $this->sel_ins = new queries();
+    }
+
+    public function Total_Instructor_Info()
+    {
+        $select = $this->sel_ins->SelectData(self::TABLES, self::COLMUNS, self::CONDITION, self::GROUP);
+        return $select;
+    }
+}
+
+// [A] this class for select data for courses page
+class selectDataForCourses
+{
+    private $sel_cour;
+    const TABLES = 'courses,teachers';
+
+    const COLMUNS =' courses.Course_name , courses.Course_Category , teachers.NAME , courses.Course_Duration
+                      , courses.Course_Cost , courses.status';
+
+    const CONDITION =  "teachers.ID = courses.TEACHER_ID
+                    AND teachers.PERSON_TYPE = 'instructor'";  
+                   
                        
     public function __construct()
      {
-         $this->sel_ins = new queries();
+         $this->sel_cour = new queries();
      }  
      
-    public function Total_Instructor_Info()
+    public function Total_Courses_Info()
      {
-         $select = $this->sel_ins->SelectData(self::TABLES , self::COLMUNS , self::CONDITION , self::GROUP );
+         $select = $this->sel_cour->SelectData(self::TABLES , self::COLMUNS , self::CONDITION);
          return $select;
      }
 }

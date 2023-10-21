@@ -214,6 +214,7 @@ td p {
 td h1 {
   font-family: sans-serif;
   font-size: 15px;
+  margin-top: 8px;
 }
 
 table,
@@ -238,9 +239,7 @@ thead th {
   color: #7E7E7E;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #0000000b;
-}
+
 
 tbody tr {
   --delay: .1s;
@@ -253,6 +252,30 @@ tbody tr {
 .td2{
   color: #AAAAAA;
   font-size: 14px;
+}
+.td3{
+  color: green;
+  display: inline-block;
+  background-color:aqua;
+  padding: 3px 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  margin-left: 10px;
+}
+.td5{
+  color: gold;
+  display: inline-block;
+  background-color:yellow;
+  padding: 3px 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  
 }
 
 tbody tr.hide {
@@ -268,18 +291,7 @@ tbody tr td img {
   transition: .2s ease-in-out;
 }
 
-tbody tr.hide td,
-tbody tr.hide td p {
-  padding: 0;
 
-  transition: .2s ease-in-out .5s;
-}
-
-tbody tr.hide td img {
-  width: 0;
-  height: 0;
-  transition: .2s ease-in-out .5s;
-}
 
 
 
