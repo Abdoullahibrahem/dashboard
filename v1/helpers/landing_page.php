@@ -31,7 +31,7 @@ function Top_Categories()
     $Top_Categories = $top->Top_Tracks(); // Get the data
 
     // Echo the JSON-encoded data
-    return json_encode($Top_Categories);
+    return $Top_Categories;
 }
 
 
