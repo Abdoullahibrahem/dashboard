@@ -1,0 +1,120 @@
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(../images/bg-color.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: space-between;
+}
+:root {
+  --primary-color: #0b46c4;
+  --secondary-color: #fafafa;
+  --lightBlue-color: #009ef8;
+  --dark-color: #000;
+  --light-color: white;
+  --gray-color: #9d9d9d;
+}
+form {
+  background-color: white;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  width: 50%;
+}
+form .welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+form .welcome #logo {
+  width: 155px;
+}
+form .content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 40px 140px;
+}
+form .content .input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+form .content input {
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: var(--gray-color) solid 1px;
+}
+
+/* Error validarion */
+form .content .error input {
+  border: rgb(255, 0, 0) solid 2px;
+}
+form .content .error input::placeholder {
+  color: rgb(255, 0, 0);
+}
+form .content .error label {
+  color: rgb(255, 0, 0);
+}
+/* Error validation */
+
+form .content .forget-pass {
+  display: flex;
+  justify-content: space-between;
+}
+form .content #login {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  transition: box-shadow 0.5s;
+}
+form .content #login:hover {
+  background-color: var(--lightBlue-color);
+  box-shadow: 5px 5px 24px #888888;
+}
+form .content .google {
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: var(--gray-color) solid 1px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--gray-color);
+  transition: box-shadow 0.5s;
+}
+form .content .google:hover {
+  box-shadow: 5px 5px 24px #888888;
+}
+.bg {
+  margin: 0 auto;
+  height: 100%;
+}
+@media (max-width: 1200px) and (min-width: 993px) {
+  body {
+    align-items: center;
+  }
+  form {
+    width: 60%;
+  }
+  .bg img {
+    width: 400px;
+  }
+}
+@media (max-width: 992px) {
+  form {
+    width: 100%;
+  }
+  .bg {
+    display: none;
+  }
+}
+@media (max-width: 426px) {
+  form {
+    width: 100%;
+  }
+  form .content {
+    margin: 30px 20px;
+  }
+}

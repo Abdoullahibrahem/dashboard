@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/lib/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <form action="#" method="post">
+      <div class="welcome">
+        <img src="assets/images/Logo.png" id="logo" alt="" />
+        <h1>Welcome Back !</h1>
+      </div>
+      <div class="content">
+        <div class="form-title">
+          <h2>Login to Vega System</h2>
+          <p class="text-secondary">Please Enter Your Login Detials</p>
+        </div>
+
+        <div class="input-field">
+          <label for="Email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter Your Email Address"
+          />
+        </div>
+
+        <div class="input-field error">
+          <label for="pass">Password</label>
+          <input
+            type="password"
+            name="pass"
+            id="pass"
+            placeholder="Enter Your Password"
+          />
+        </div>
+
+        <div class="forget-pass">
+          <div class="checkbox">
+            <input type="checkbox" name="remember" id="remember" />
+            <label for="remember" class="text-secondary">Remember Me</label>
+          </div>
+          <a href="#" class="text-decoration-none">Forget Password ?</a>
+        </div>
+        <input type="submit" value="Login" id="login" />
+        <a href="#" class="google">
+          <img src="assets/images/googleIcon.png" alt="" />
+          Login With Google
+        </a>
+      </div>
+    </form>
+
+    <div class="bg">
+      <img src="assets/images/form-bg.png" alt="form-bg-image" />
+    </div>
+    <script src="assets/js/lib/bootstrap.js"></script>
+    <script src="assets/js/lib/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/lib/popper.min.js"></script>
+  </body>
+</html>
